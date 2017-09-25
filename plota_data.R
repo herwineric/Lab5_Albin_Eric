@@ -5,9 +5,10 @@ plota_data<-function(adress,zoom=10){
     stop("adress is not of class character")
   }
   
-  if(class(zoom)!="numeric"){
-    stop("zoom is not of class numeric")
+  if(sum(which(c(class(zoom)!="numeric",class(zoom)!="character")==c(FALSE,FALSE)))==3){
+    stop("zoom is not of class numeric or character")
   }
+  
   
   if(grepl("å|Å|ä|Ä",adress)){
     adress<-gsub("å|Å|ä|Ä","a",adress)
@@ -15,6 +16,11 @@ plota_data<-function(adress,zoom=10){
   if(grepl("ö|Ö",adress)){
     adress<-gsub("ö|Ö","o",adress)
   }
+  
+  if(grepl(" ",adress)){
+    adress<-gsub(" ","+",adress)
+  }
+  
   
   adress_lank<-paste("https://maps.googleapis.com/maps/api/geocode/json?address=",adress,"&key=AIzaSyBhxCAL3_jkKxyBjneWKGUYbqWkGZvnQUc",sep="")
   data_mat<-fromJSON(content(GET(adress_lank),"text"),simplifyVector = FALSE)
@@ -29,5 +35,6 @@ plota_data<-function(adress,zoom=10){
   min_data$Latitude<-data_mat$results[[1]]$geometry$location[[1]]
   min_data$longitude<-data_mat$results[[1]]$geometry$location[[2]]
   
- min_data
+  min_data
+
 }

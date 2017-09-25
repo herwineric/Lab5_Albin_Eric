@@ -1,17 +1,15 @@
-library(jsonlite)
-library(httr)
-library(png)
- 
-plota_karta("linköping",9)
+plota_karta("karlebo 101 hjorted",9)
+
 plota_karta<-function(adress,zoom=10){
   
   if(class(adress)!="character"){
     stop("adress is not of class character")
   }
   
-  if(class(zoom)!="numeric"){
-    stop("zoom is not of class numeric")
+  if(sum(which(c(class(zoom)!="numeric",class(zoom)!="character")==c(FALSE,FALSE)))==3){
+    stop("zoom is not of class numeric or character")
   }
+  
   
   if(grepl("å|Å|ä|Ä",adress)){
     adress<-gsub("å|Å|ä|Ä","a",adress)
@@ -19,6 +17,11 @@ plota_karta<-function(adress,zoom=10){
   if(grepl("ö|Ö",adress)){
     adress<-gsub("ö|Ö","o",adress)
   }
+  
+  if(grepl(" ",adress)){
+    adress<-gsub(" ","+",adress)
+  }
+  
 
   adress_lank<-paste("https://maps.googleapis.com/maps/api/geocode/json?address=",adress,"&key=AIzaSyBhxCAL3_jkKxyBjneWKGUYbqWkGZvnQUc",sep="")
   data_mat<-fromJSON(content(GET(adress_lank),"text"),simplifyVector = FALSE)
