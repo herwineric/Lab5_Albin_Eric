@@ -15,22 +15,29 @@ n2 <- url_list$results[[1]]$geometry$viewport$northeast$lng
 
 
 
-urle <- "https://maps.googleapis.com/maps/api/geocode/json?address=sweden"
+urle <- "https://maps.googleapis.com/maps/api/geocode/json?address=nykoping"
 
 resp <- GET(url = urle)
 url_list <- jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)
 
-tmp <- tempfile()
-download.file(url = "http://maps.googleapis.com/maps/api/staticmap?center=nykoping&zoom=17&size=640x640&scale=3&maptype=terrain&language=en-EN&sensor=false", 
-              destfile = tmp, quiet = TRUE, mode = "wb")
-map <- readPNG(tmp)
-plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
-rasterImage(map,0,0,1,1)
+location <- "nykoping"
+
+map_generator <- function(location, zoom = 10 ){
+  
+  url <- paste("http://maps.googleapis.com/maps/api/staticmap?center=", location, "&zoom=", zoom,
+               "&size=640x640&scale=3&maptype=terrain&language=en-EN&sensor=false", sep="")
+  
+  tmp <- tempfile()
+  download.file(url = url, 
+                destfile = tmp, quiet = TRUE, mode = "wb")
+  map <- readPNG(tmp)
+  plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
+  rasterImage(map,0,0,1,1)
+}
 
 
 
-map <- aperm(map, c(2, 1, 3))
 
-getOption("max.print")
+map_generator("nykoping")
 
 
