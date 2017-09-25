@@ -15,16 +15,21 @@ data_address<-function(address){
   }
   
   
-  if(grepl("å|Å|ä|Ä",address)){
-    address<-gsub("å|Å|ä|Ä","a",address)
-  }
-  if(grepl("ö|Ö",address)){
-    address<-gsub("ö|Ö","o",address)
-  }
+  # if(grepl("å|Å|ä|Ä",address)){
+  #   address<-gsub("å|Å|ä|Ä","a",address)
+  # }
+  # if(grepl("ö|Ö",address)){
+  #   address<-gsub("ö|Ö","o",address)
+  # }
   
   if(grepl(" ",address)){
     address<-gsub(" ","+",address)
   }
+  
+  
+  require("png")
+  require("httr")
+  require("jsonlite")
   
   
   address_lank<-paste("https://maps.googleapis.com/maps/api/geocode/json?address=",address,"&key=AIzaSyBhxCAL3_jkKxyBjneWKGUYbqWkGZvnQUc",sep="")

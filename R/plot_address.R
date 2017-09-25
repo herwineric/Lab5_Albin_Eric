@@ -16,12 +16,12 @@ plot_address<-function(address,zoom=10){
   min_data<-data_address(address)
 
   
-  if(grepl("å|Å|ä|Ä",address)){
-    address<-gsub("å|Å|ä|Ä","a",address)
-  }
-  if(grepl("ö|Ö",address)){
-    address<-gsub("ö|Ö","o",address)
-  }
+  # if(grepl("å|Å|ä|Ä",address)){
+  #   address<-gsub("å|Å|ä|Ä","a",address)
+  # }
+  # if(grepl("ö|Ö",address)){
+  #   address<-gsub("ö|Ö","o",address)
+  # }
   
   if(grepl(" ",address)){
     address<-gsub(" ","+",address)
