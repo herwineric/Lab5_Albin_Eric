@@ -9,8 +9,11 @@
 #'#plot_address("karlebo 101 hjorted",14)
 plot_address<-function(address,zoom=10){
   
-  if(sum(which(c(class(zoom)=="numeric",class(zoom)=="character")==c(FALSE,FALSE)))==3){
-    stop("zoom is not of class numeric or character")
+  if(class(zoom)!="character"){
+    zoom<-as.character(zoom)
+    if(class(zoom)!="character"){
+      stop("zoom is not of class numeric or character")
+    }
   }
   
   min_data<-data_address(address)
