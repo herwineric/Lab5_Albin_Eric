@@ -5,8 +5,8 @@
 #'@export
 #'@return Returns a plot of the address/destination
 #'@examples 
-#'#plot_address("linkoping",13)
-#'#plot_address("karlebo 101 hjorted",14)
+#'plot_address("linkoping",13)
+#'plot_address("karlebo 101 hjorted",14)
 plot_address<-function(address,zoom=10){
   
   if(class(zoom)!="character"){

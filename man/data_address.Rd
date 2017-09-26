@@ -16,6 +16,6 @@ Returns a data.frame of the name of the address/destination, longitude and latit
 Return the longitude and latitude of a address/destination
 }
 \examples{
-#data_address("linkoping")
-#data_address("london")
+data_address("linkoping")
+data_address("london")
 }

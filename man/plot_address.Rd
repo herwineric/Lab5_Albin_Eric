@@ -18,6 +18,6 @@ Returns a plot of the address/destination
 Plot a given address/destination with diffrent zoom
 }
 \examples{
-#plot_address("linkoping",13)
-#plot_address("karlebo 101 hjorted",14)
+plot_address("linkoping",13)
+plot_address("karlebo 101 hjorted",14)
 }

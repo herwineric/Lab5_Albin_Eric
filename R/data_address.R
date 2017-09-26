@@ -4,8 +4,8 @@
 #'@export
 #'@return Returns a data.frame of the name of the address/destination, longitude and latitude.
 #'@examples 
-#'#data_address("linkoping")
-#'#data_address("london")
+#'data_address("linkoping")
+#'data_address("london")
 
 
 data_address<-function(address){
