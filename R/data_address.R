@@ -35,7 +35,7 @@ data_address<-function(address){
   }
   
   min_data<-data_mat$results[[1]]$formatted_address
-  min_data<-data.frame(namn=min_data)
+  min_data<-data.frame(Full_address=min_data)
   
   min_data$Latitude<-data_mat$results[[1]]$geometry$location[[1]]
   min_data$Longitude<-data_mat$results[[1]]$geometry$location[[2]]

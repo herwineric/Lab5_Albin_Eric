@@ -37,5 +37,5 @@ plot_address<-function(address,zoom=10){
   map <- png::readPNG(tmp)
   plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
   rasterImage(map,0,0,1,1)
-  title(min_data$namn)
+  title(min_data$Full_address)
 }
