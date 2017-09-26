@@ -27,13 +27,8 @@ data_address<-function(address){
   }
   
   
-  require("png")
-  require("httr")
-  require("jsonlite")
-  
-  
   address_lank<-paste("https://maps.googleapis.com/maps/api/geocode/json?address=",address,"&key=AIzaSyBhxCAL3_jkKxyBjneWKGUYbqWkGZvnQUc",sep="")
-  data_mat<-fromJSON(content(GET(address_lank),"text"),simplifyVector = FALSE)
+  data_mat<-jsonlite::fromJSON(httr::content(httr::GET(address_lank),"text"),simplifyVector = FALSE)
   
   if(data_mat$status=="ZERO_RESULTS"){
     stop("address not found!")

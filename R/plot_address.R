@@ -31,7 +31,7 @@ plot_address<-function(address,zoom=10){
   tmp <- tempfile()
   download.file(url = karta_fil, 
                 destfile = tmp, quiet = TRUE, mode = "wb")
-  map <- readPNG(tmp)
+  map <- png::readPNG(tmp)
   plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
   rasterImage(map,0,0,1,1)
   title(min_data$namn)
