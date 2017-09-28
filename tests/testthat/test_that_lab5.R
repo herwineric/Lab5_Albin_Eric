@@ -7,12 +7,6 @@ test_that("outputs are correct in the data_address function", {
   expect_output(print(testa),"16.18")
 })
 
-test_that("outputs are correct in the plot_address function", {
-  testa <- plot_address("Totebo",14)
-  expect_output(print(testa),NULL)
-})
-
-
 test_that("data_address and plot_address seems to work", {
   expect_error(data_address("den_har_adressen_finns_ej"))
   expect_error(data_address(10))
