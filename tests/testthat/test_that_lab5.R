@@ -83,7 +83,7 @@ test_that("outputs are correct in the data_address function. spacing", {
   testa <- data_address("astrid lindgrens varld")
   
   expect_output(print(testa),"598 85 Vimmerby")
-  expect_output(print(testa),"100 12")
+  expect_output(print(testa),"598 85")
 })
 
 
